@@ -1,0 +1,13 @@
+import { Document } from 'mongoose';
+
+export interface Film extends Document {
+  readonly title: string;
+  readonly episodeNumber: number;
+  readonly openingCrawl: string;
+  readonly directors: string[];
+  readonly producers: string[];
+  readonly releaseDate: Date;
+  readonly runTime: number;
+  readonly budget: number;
+  readonly posterUrl: string;
+}
