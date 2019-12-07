@@ -1,0 +1,30 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/swapi/src",
+  "monorepo": true,
+  "root": "apps/swapi",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/swapi/tsconfig.app.json"
+  },
+  "projects": {
+    "swapi": {
+      "type": "application",
+      "root": "apps/swapi",
+      "entryFile": "main",
+      "sourceRoot": "apps/swapi/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/swapi/tsconfig.app.json"
+      }
+    },
+    "swapi-graphql": {
+      "type": "application",
+      "root": "apps/swapi-graphql",
+      "entryFile": "main",
+      "sourceRoot": "apps/swapi-graphql/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/swapi-graphql/tsconfig.app.json"
+      }
+    }
+  }
+}
