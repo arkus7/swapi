@@ -5,10 +5,9 @@
  */
 
 /* tslint:disable */
-export class Film {
-    id: string;
+export class CreateFilmInput {
     title: string;
-    episodeNumber: number;
+    episodeNumber?: number;
     openingCrawl: string;
     directors: string[];
     producers: string[];
@@ -16,6 +15,23 @@ export class Film {
     runTime: number;
     budget?: number;
     posterUrl: string;
+}
+
+export class Film {
+    id: string;
+    title: string;
+    episodeNumber?: number;
+    openingCrawl: string;
+    directors: string[];
+    producers: string[];
+    releaseDate: Date;
+    runTime: number;
+    budget?: number;
+    posterUrl: string;
+}
+
+export abstract class IMutation {
+    abstract createFilm(filmData?: CreateFilmInput): Film | Promise<Film>;
 }
 
 export abstract class IQuery {
