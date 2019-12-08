@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface Film extends Document {
+  readonly id: string;
   readonly title: string;
   readonly episodeNumber: number;
   readonly openingCrawl: string;
