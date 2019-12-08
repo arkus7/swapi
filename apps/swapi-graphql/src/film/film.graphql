@@ -14,7 +14,7 @@ type Film {
 }
 
 type Query {
-  films: [Film!]!
+  films(params: FilmFindInput): PaginatedFilms!
   film(id: ID!): Film
   filmByEpisode(episodeNumber: Int!): Film
 }
@@ -33,4 +33,22 @@ input CreateFilmInput {
   runTime: Int!
   budget: Int
   posterUrl: String!
+}
+
+input FilmFindInput {
+  paginate: PaginateOptions
+  conditions: FilmWhereInput
+}
+
+input FilmWhereInput {
+  episodeNumber: Int
+  title: String
+}
+
+type PaginatedFilms {
+  results: [Film]!
+  previous: String
+  hasPrevious: Boolean!
+  next: String
+  hasNext: Boolean!
 }

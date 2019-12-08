@@ -6,7 +6,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
   const port = process.env.PORT || app.get(ConfigService).graphqlPort;
   const logger = new Logger('Swapi GraphQL');

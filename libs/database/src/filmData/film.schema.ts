@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
+import { MongoPaging } from 'mongoose-cursor-pagination-plugin';
 
-export const FilmSchema = new mongoose.Schema({
+const FilmSchema = new mongoose.Schema({
   title: String,
   episodeNumber: Number,
   openingCrawl: String,
@@ -11,3 +12,9 @@ export const FilmSchema = new mongoose.Schema({
   budget: Number,
   posterUrl: String,
 });
+
+FilmSchema.plugin(MongoPaging.mongoosePlugin);
+
+export {
+  FilmSchema,
+};
