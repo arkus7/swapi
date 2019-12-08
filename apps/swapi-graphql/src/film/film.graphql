@@ -1,0 +1,54 @@
+scalar Date
+
+type Film {
+  id: ID!
+  title: String!
+  episodeNumber: Int
+  openingCrawl: String!
+  directors: [String!]!
+  producers: [String!]!
+  releaseDate: Date!
+  runTime: Int!
+  budget: Int
+  posterUrl: String!
+}
+
+type Query {
+  films(params: FilmFindInput): PaginatedFilms!
+  film(id: ID!): Film
+  filmByEpisode(episodeNumber: Int!): Film
+}
+
+type Mutation {
+  createFilm(filmData: CreateFilmInput): Film
+}
+
+input CreateFilmInput {
+  title: String!
+  episodeNumber: Int
+  openingCrawl: String!
+  directors: [String!]!
+  producers: [String!]!
+  releaseDate: Date!
+  runTime: Int!
+  budget: Int
+  posterUrl: String!
+}
+
+input FilmFindInput {
+  paginate: PaginateOptions
+  conditions: FilmWhereInput
+}
+
+input FilmWhereInput {
+  episodeNumber: Int
+  title: String
+}
+
+type PaginatedFilms {
+  results: [Film]!
+  previous: String
+  hasPrevious: Boolean!
+  next: String
+  hasNext: Boolean!
+}
