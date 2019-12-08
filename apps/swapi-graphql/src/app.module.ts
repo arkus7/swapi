@@ -3,6 +3,7 @@ import { ConfigService } from '@app/config/config.service';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 
+import { DateScalar } from './common/scalars/date.scalar';
 import { FilmModule } from './film/film.module';
 
 @Module({
@@ -20,5 +21,6 @@ import { FilmModule } from './film/film.module';
       },
     }),
   ],
+  providers: [DateScalar],
 })
 export class AppModule { }
