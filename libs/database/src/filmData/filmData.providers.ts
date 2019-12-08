@@ -5,7 +5,7 @@ import { FilmSchema } from './film.schema';
 
 export const FILM_MODEL_TOKEN = 'FILM_MODEL';
 
-export const filmProviders = [
+export const filmDataProviders = [
   {
     provide: FILM_MODEL_TOKEN,
     useFactory: (connection: Connection) => connection.model('Film', FilmSchema),
