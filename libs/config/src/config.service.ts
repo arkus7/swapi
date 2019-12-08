@@ -14,9 +14,7 @@ export class ConfigService {
   private readonly envConfig: Record<string, string>;
 
   constructor(filePath: string) {
-    console.log('TCL: ConfigService -> constructor -> filePath', filePath);
     const config = dotenv.parse(fs.readFileSync(filePath));
-    console.log('TCL: ConfigService -> constructor -> config', config);
     this.envConfig = this.validateInput(config);
   }
 
