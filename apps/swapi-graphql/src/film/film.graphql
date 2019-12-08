@@ -1,0 +1,18 @@
+scalar Date
+
+type Film {
+  id: ID!
+  title: String
+  episodeNumber: Int
+  openingCrawl: String
+  directors: [String]
+  producers: [String]
+  releaseDate: Date
+  runTime: Int
+  budget: Int
+  posterUrl: String
+}
+
+type Query {
+  films: [Film]
+}
