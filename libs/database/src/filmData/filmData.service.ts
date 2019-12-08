@@ -16,4 +16,12 @@ export class FilmDataService {
   async findAll(): Promise<Film[]> {
     return await this.filmModel.find().exec();
   }
+
+  async findById(id: string): Promise<Film> {
+    return await this.filmModel.findById(id).exec();
+  }
+
+  async findByEpisodeNumber(episodeNumber: number): Promise<Film> {
+    return await this.filmModel.findOne({ episodeNumber }).exec();
+  }
 }

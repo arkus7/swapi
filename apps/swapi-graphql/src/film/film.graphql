@@ -2,17 +2,19 @@ scalar Date
 
 type Film {
   id: ID!
-  title: String
-  episodeNumber: Int
-  openingCrawl: String
-  directors: [String]
-  producers: [String]
-  releaseDate: Date
-  runTime: Int
+  title: String!
+  episodeNumber: Int!
+  openingCrawl: String!
+  directors: [String!]!
+  producers: [String!]!
+  releaseDate: Date!
+  runTime: Int!
   budget: Int
-  posterUrl: String
+  posterUrl: String!
 }
 
 type Query {
-  films: [Film]
+  films: [Film!]!
+  film(id: ID!): Film
+  filmByEpisode(episodeNumber: Int!): Film
 }
