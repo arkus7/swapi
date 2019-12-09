@@ -1,0 +1,26 @@
+type Location {
+  id: ID!
+  name: String!
+  pictureUrl: String
+  appearances: [Film!]!
+  climate: [String!]!
+  terrain: [String!]!
+}
+
+type Query {
+  locations(params: LocationFindInput): PaginatedLocations!
+  location(id: ID!): Location
+  locationsFromFilm(filmId: ID!): [Location!]!
+}
+
+input LocationFindInput {
+  paginate: PaginateOptions
+}
+
+type PaginatedLocations {
+  results: [Location]!
+  previous: String
+  hasPrevious: Boolean!
+  next: String
+  hasNext: Boolean!
+}
