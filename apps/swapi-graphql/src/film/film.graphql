@@ -4,13 +4,15 @@ type Film {
   id: ID!
   title: String!
   episodeNumber: Int
-  openingCrawl: String!
+  openingCrawl: String
   directors: [String!]!
   producers: [String!]!
-  releaseDate: Date!
-  runTime: Int!
+  releaseDate: Date
+  runTime: Int
   budget: Int
-  posterUrl: String!
+  posterUrl: String
+  precededBy: Film
+  followedBy: Film
 }
 
 type Query {
@@ -26,13 +28,15 @@ type Mutation {
 input CreateFilmInput {
   title: String!
   episodeNumber: Int
-  openingCrawl: String!
+  openingCrawl: String
   directors: [String!]!
   producers: [String!]!
-  releaseDate: Date!
-  runTime: Int!
+  releaseDate: Date
+  runTime: Int
   budget: Int
-  posterUrl: String!
+  posterUrl: String
+  precededBy: ID
+  followedBy: ID
 }
 
 input FilmFindInput {
