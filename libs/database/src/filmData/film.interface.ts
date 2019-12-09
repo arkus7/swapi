@@ -11,4 +11,6 @@ export interface Film extends Document {
   readonly runTime: number;
   readonly budget: number;
   readonly posterUrl: string;
+  readonly precededBy: string;
+  readonly followedBy: string;
 }
