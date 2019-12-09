@@ -1,0 +1,34 @@
+type Character {
+  id: ID!
+  name: String!
+  pictureUrl: String
+  height: Int
+  mass: Int
+  hairColor: [String!]!
+  skinColor: [String!]!
+  eyeColor: [String!]!
+  birthYear: String
+  gender: String
+  # homeWorld: Planet
+  # species: Species
+  appearances: [Film!]!
+  # vehicles: [Vehicle!]!
+}
+
+type Query {
+  characters(params: CharacterFindInput): PaginatedCharacters!
+  character(id: ID!): Character
+  charactersFromFilm(filmId: ID!): [Character!]!
+}
+
+input CharacterFindInput {
+  paginate: PaginateOptions
+}
+
+type PaginatedCharacters {
+  results: [Character]!
+  previous: String
+  hasPrevious: Boolean!
+  next: String
+  hasNext: Boolean!
+}

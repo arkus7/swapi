@@ -9,7 +9,14 @@ export const databaseProviders = [
     provide: DATABASE_CONNECTION_TOKEN,
     useFactory: (config: ConfigService): Promise<typeof mongoose> => {
       const { user, password, database } = config.mongoCredentials;
-      return mongoose.connect(`mongodb://${user}:${password}@ds233198.mlab.com:33198/${database}`, { useNewUrlParser: true });
+
+      const connectionUri = `mongodb://${user}:${password}@ds233198.mlab.com:33198/${database}`;
+      const connectionOptions: mongoose.ConnectionOptions = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      };
+
+      return mongoose.connect(connectionUri, connectionOptions);
     },
     inject: [ConfigService],
   },

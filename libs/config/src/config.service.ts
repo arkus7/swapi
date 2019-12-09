@@ -38,6 +38,11 @@ export class ConfigService {
     return parseInt(this.get('GRAPHQL_PORT'), 10);
   }
 
+  get isDebug(): boolean {
+    const env = this.get('NODE_ENV');
+    return env === 'test' || env === 'development';
+  }
+
   /**
    * Ensures all needed variables are set, and returns the validated JavaScript object
    * including the applied default values.

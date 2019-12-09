@@ -1,0 +1,7 @@
+input PaginateOptions {
+  take: Int
+  after: String
+  before: String
+  sortBy: String
+  ascending: Boolean
+}
