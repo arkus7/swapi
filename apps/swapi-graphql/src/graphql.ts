@@ -42,6 +42,7 @@ export class FilmWhereInput {
 
 export class LocationFindInput {
     paginate?: PaginateOptionsInput;
+    filter?: LocationWhereInput;
 }
 
 export class PaginateOptionsInput {
@@ -89,6 +90,13 @@ export class Location {
     appearances: Film[];
     climate: string[];
     terrain: string[];
+}
+
+export class LocationWhereInput {
+    name?: string;
+    film?: string;
+    climate?: string;
+    terrain?: string;
 }
 
 export abstract class IMutation {

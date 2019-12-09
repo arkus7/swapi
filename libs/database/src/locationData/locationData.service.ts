@@ -10,15 +10,45 @@ export class LocationDataService {
   constructor(@Inject(LOCATION_MODEL_TOKEN) private readonly locationModel: PaginatedModel<Location>) { }
 
   async findAll(params: LocationFindInputDto = LocationFindInputDto.default()): Promise<PaginateResult<Location>> {
-    const { paginate } = params;
+    const { paginate, filter } = params;
+
+    const query: any = {};
+    const { name, terrain, climate, film } = filter;
+
+    if (name) {
+      query.name = {
+        $regex: name,
+        $options: 'i',
+      };
+    }
+
+    if (terrain) {
+      query.terrain = {
+        $regex: terrain,
+        $options: 'i',
+      };
+    }
+
+    if (climate) {
+      query.climate = {
+        $regex: climate,
+        $options: 'i',
+      };
+    }
+
+    if (film) {
+      query.appearances = film;
+    }
 
     const options: PaginateOptions = {
+      query,
       limit: paginate.take,
       next: paginate.after,
       previous: paginate.before,
       sortAscending: paginate.ascending,
       paginatedField: paginate.sortBy,
     };
+    console.log('TCL: LocationDataService -> constructor -> options', options);
 
     const response = await this.locationModel.paginate(options);
 

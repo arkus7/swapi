@@ -15,6 +15,14 @@ type Query {
 
 input LocationFindInput {
   paginate: PaginateOptionsInput
+  filter: LocationWhereInput
+}
+
+type LocationWhereInput {
+  name: String
+  film: ID
+  climate: String
+  terrain: String
 }
 
 type PaginatedLocations {
