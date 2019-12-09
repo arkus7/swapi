@@ -3,12 +3,14 @@ import { ConfigService } from '@app/config/config.service';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 
+import { CharacterModule } from './character/character.module';
 import { DateScalar } from './common/scalars/date.scalar';
 import { FilmModule } from './film/film.module';
 
 @Module({
   imports: [
     FilmModule,
+    CharacterModule,
     GraphQLModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

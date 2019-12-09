@@ -1,6 +1,6 @@
+import { FilmDataModule } from '@app/database/filmData/filmData.module';
 import { Module } from '@nestjs/common';
 
-import { FilmDataModule } from '../../../../libs/database/src/filmData/filmData.module';
 import { FilmResolvers } from './film.resolvers';
 
 @Module({
