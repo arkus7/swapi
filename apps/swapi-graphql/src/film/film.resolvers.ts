@@ -13,7 +13,7 @@ export class FilmResolvers {
 
   @Query('films')
   async getAllFilms(@Args('params') params: FilmFindInputArgs): Promise<PaginateResult<Film>> {
-    const options = Object.assign({ paginate: {}, conditions: {} }, params);
+    const options = Object.assign({ paginate: {}, filter: {} }, params);
     return await this.filmDataService.findAll(options);
   }
 

@@ -11,5 +11,12 @@ export class FilmFindInputDto extends FilmFindInput {
   paginate?: FilmPaginateInputDto;
   @ValidateNested()
   @Type(() => FilmWhereInputDto)
-  conditions?: FilmWhereInputDto;
+  filter?: FilmWhereInputDto;
+
+  static default(): FilmFindInputDto {
+    return {
+      paginate: {},
+      filter: {},
+    };
+  }
 }

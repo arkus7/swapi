@@ -41,7 +41,7 @@ input CreateFilmInput {
 
 input FilmFindInput {
   paginate: PaginateOptions
-  conditions: FilmWhereInput
+  filter: FilmWhereInput
 }
 
 input FilmWhereInput {

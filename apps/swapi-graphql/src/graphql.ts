@@ -7,6 +7,13 @@
 /* tslint:disable */
 export class CharacterFindInput {
     paginate?: PaginateOptions;
+    filter?: CharacterWhereInput;
+}
+
+export class CharacterWhereInput {
+    name?: string;
+    film?: string;
+    homeWorld?: string;
 }
 
 export class CreateFilmInput {
@@ -25,7 +32,7 @@ export class CreateFilmInput {
 
 export class FilmFindInput {
     paginate?: PaginateOptions;
-    conditions?: FilmWhereInput;
+    filter?: FilmWhereInput;
 }
 
 export class FilmWhereInput {
@@ -56,6 +63,7 @@ export class Character {
     eyeColor: string[];
     birthYear?: string;
     gender?: string;
+    homeWorld?: Location;
     appearances: Film[];
 }
 

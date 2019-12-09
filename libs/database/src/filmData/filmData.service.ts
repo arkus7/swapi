@@ -15,11 +15,11 @@ export class FilmDataService {
     return await createdFilm.save();
   }
 
-  async findAll(params: FilmFindInputDto = { paginate: {}, conditions: {} }): Promise<PaginateResult<Film>> {
-    const { paginate, conditions } = params;
+  async findAll(params: FilmFindInputDto = { paginate: {}, filter: {} }): Promise<PaginateResult<Film>> {
+    const { paginate, filter } = params;
     const options = {
       limit: paginate.take,
-      query: conditions,
+      query: filter,
       next: paginate.after,
       previous: paginate.before,
       paginatedField: paginate.sortBy,

@@ -10,17 +10,31 @@ export class CharacterDataService {
   constructor(@Inject(CHARACTER_MODEL_TOKEN) private readonly characterModel: PaginatedModel<Character>) { }
 
   async findAll(params: CharacterFindInputDto = CharacterFindInputDto.default()): Promise<PaginateResult<Character>> {
-    const { paginate } = params;
+    const { paginate, filter } = params;
+
+    const query: any = {};
+    const { name, film, homeWorld } = filter;
+
+    if (name) {
+      query.name = name;
+    }
+    if (film) {
+      query.appearances = film;
+    }
+    if (homeWorld) {
+      query.homeWorld = homeWorld;
+    }
+
     const options = {
+      query,
       limit: paginate.take,
       next: paginate.after,
       previous: paginate.before,
       paginatedField: paginate.sortBy,
     };
+    console.log('TCL: CharacterDataService -> constructor -> options', options);
 
-    const response = await this.characterModel.paginate(options);
-
-    return response;
+    return await this.characterModel.paginate(options);
   }
 
   async findById(id: string): Promise<Character> {

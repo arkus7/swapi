@@ -23,6 +23,13 @@ type Query {
 
 input CharacterFindInput {
   paginate: PaginateOptions
+  filter: CharacterWhereInput
+}
+
+input CharacterWhereInput {
+  name: String
+  film: ID
+  homeWorld: ID
 }
 
 type PaginatedCharacters {
