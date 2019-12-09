@@ -19,7 +19,7 @@ module.exports = [
     ],
     birthYear: '19BBY',
     gender: 'male',
-    homeworld: locations.tatooine,
+    homeWorld: locations.tatooine,
     species: species.human,
     appearances: [
       films.newHope,
@@ -49,7 +49,7 @@ module.exports = [
     ],
     birthYear: '112BBY',
     gender: null,
-    homeworld: locations.tatooine,
+    homeWorld: locations.tatooine,
     species: species.droid,
     appearances: [
       films.attackOfTheClones,
@@ -79,7 +79,7 @@ module.exports = [
     ],
     birthYear: '33BBY',
     gender: null,
-    homeworld: locations.naboo,
+    homeWorld: locations.naboo,
     species: species.droid,
     appearances: [
       films.newHope,

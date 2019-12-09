@@ -5,6 +5,10 @@
  */
 
 /* tslint:disable */
+export class CharacterFindInput {
+    paginate?: PaginateOptions;
+}
+
 export class CreateFilmInput {
     title: string;
     episodeNumber?: number;
@@ -37,6 +41,20 @@ export class PaginateOptions {
     ascending?: boolean;
 }
 
+export class Character {
+    id: string;
+    name: string;
+    pictureUrl?: string;
+    height?: number;
+    mass?: number;
+    hairColor: string[];
+    skinColor: string[];
+    eyeColor: string[];
+    birthYear?: string;
+    gender?: string;
+    appearances: Film[];
+}
+
 export class Film {
     id: string;
     title: string;
@@ -56,6 +74,14 @@ export abstract class IMutation {
     abstract createFilm(filmData?: CreateFilmInput): Film | Promise<Film>;
 }
 
+export class PaginatedCharacters {
+    results: Character[];
+    previous?: string;
+    hasPrevious: boolean;
+    next?: string;
+    hasNext: boolean;
+}
+
 export class PaginatedFilms {
     results: Film[];
     previous?: string;
@@ -65,6 +91,12 @@ export class PaginatedFilms {
 }
 
 export abstract class IQuery {
+    abstract characters(params?: CharacterFindInput): PaginatedCharacters | Promise<PaginatedCharacters>;
+
+    abstract character(id: string): Character | Promise<Character>;
+
+    abstract charactersFromFilm(filmId: string): Character[] | Promise<Character[]>;
+
     abstract films(params?: FilmFindInput): PaginatedFilms | Promise<PaginatedFilms>;
 
     abstract film(id: string): Film | Promise<Film>;
