@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 
-import { PaginatedModel } from '../common/paginated.model';
+import { PaginatedModel, PaginateOptions } from '../common/paginated.model';
 import { PaginateResult } from '../common/paginateResult.interface';
 import { LocationFindInputDto } from './dto/locationFindInput.dto';
 import { Location } from './location.interface';
@@ -11,10 +11,12 @@ export class LocationDataService {
 
   async findAll(params: LocationFindInputDto = LocationFindInputDto.default()): Promise<PaginateResult<Location>> {
     const { paginate } = params;
-    const options = {
+
+    const options: PaginateOptions = {
       limit: paginate.take,
       next: paginate.after,
       previous: paginate.before,
+      sortAscending: paginate.ascending,
       paginatedField: paginate.sortBy,
     };
 

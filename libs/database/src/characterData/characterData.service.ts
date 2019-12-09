@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 
-import { PaginatedModel } from '../common/paginated.model';
+import { PaginatedModel, PaginateOptions } from '../common/paginated.model';
 import { PaginateResult } from '../common/paginateResult.interface';
 import { Character } from './character.interface';
 import { CHARACTER_MODEL_TOKEN } from './characterData.providers';
@@ -16,7 +16,10 @@ export class CharacterDataService {
     const { name, film, homeWorld } = filter;
 
     if (name) {
-      query.name = name;
+      query.name = {
+        $regex: name,
+        $options: 'i',
+      };
     }
     if (film) {
       query.appearances = film;
@@ -25,11 +28,12 @@ export class CharacterDataService {
       query.homeWorld = homeWorld;
     }
 
-    const options = {
+    const options: PaginateOptions = {
       query,
       limit: paginate.take,
       next: paginate.after,
       previous: paginate.before,
+      sortAscending: paginate.ascending,
       paginatedField: paginate.sortBy,
     };
     console.log('TCL: CharacterDataService -> constructor -> options', options);
