@@ -9,7 +9,7 @@ type Character {
   eyeColor: [String!]!
   birthYear: String
   gender: String
-  # homeWorld: Planet
+  homeWorld: Location
   # species: Species
   appearances: [Film!]!
   # vehicles: [Vehicle!]!
