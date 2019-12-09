@@ -6,7 +6,7 @@
 
 /* tslint:disable */
 export class CharacterFindInput {
-    paginate?: PaginateOptions;
+    paginate?: PaginateOptionsInput;
     filter?: CharacterWhereInput;
 }
 
@@ -31,7 +31,7 @@ export class CreateFilmInput {
 }
 
 export class FilmFindInput {
-    paginate?: PaginateOptions;
+    paginate?: PaginateOptionsInput;
     filter?: FilmWhereInput;
 }
 
@@ -41,10 +41,10 @@ export class FilmWhereInput {
 }
 
 export class LocationFindInput {
-    paginate?: PaginateOptions;
+    paginate?: PaginateOptionsInput;
 }
 
-export class PaginateOptions {
+export class PaginateOptionsInput {
     take?: number;
     after?: string;
     before?: string;

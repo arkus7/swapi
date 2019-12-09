@@ -14,7 +14,7 @@ type Query {
 }
 
 input LocationFindInput {
-  paginate: PaginateOptions
+  paginate: PaginateOptionsInput
 }
 
 type PaginatedLocations {

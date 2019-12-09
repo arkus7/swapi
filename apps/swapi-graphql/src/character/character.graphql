@@ -22,7 +22,7 @@ type Query {
 }
 
 input CharacterFindInput {
-  paginate: PaginateOptions
+  paginate: PaginateOptionsInput
   filter: CharacterWhereInput
 }
 

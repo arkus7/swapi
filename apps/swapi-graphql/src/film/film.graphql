@@ -40,7 +40,7 @@ input CreateFilmInput {
 }
 
 input FilmFindInput {
-  paginate: PaginateOptions
+  paginate: PaginateOptionsInput
   filter: FilmWhereInput
 }
 
