@@ -18,7 +18,7 @@ input LocationFindInput {
   filter: LocationWhereInput
 }
 
-type LocationWhereInput {
+input LocationWhereInput {
   name: String
   film: ID
   climate: String

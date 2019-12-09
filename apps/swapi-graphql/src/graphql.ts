@@ -45,12 +45,28 @@ export class LocationFindInput {
     filter?: LocationWhereInput;
 }
 
+export class LocationWhereInput {
+    name?: string;
+    film?: string;
+    climate?: string;
+    terrain?: string;
+}
+
 export class PaginateOptionsInput {
     take?: number;
     after?: string;
     before?: string;
     sortBy?: string;
     ascending?: boolean;
+}
+
+export class SpeciesFindInput {
+    paginate?: PaginateOptionsInput;
+    filter?: SpeciesWhereInput;
+}
+
+export class SpeciesWhereInput {
+    name?: string;
 }
 
 export class Character {
@@ -92,13 +108,6 @@ export class Location {
     terrain: string[];
 }
 
-export class LocationWhereInput {
-    name?: string;
-    film?: string;
-    climate?: string;
-    terrain?: string;
-}
-
 export abstract class IMutation {
     abstract createFilm(filmData?: CreateFilmInput): Film | Promise<Film>;
 }
@@ -127,6 +136,14 @@ export class PaginatedLocations {
     hasNext: boolean;
 }
 
+export class PaginatedSpecies {
+    results: Species[];
+    previous?: string;
+    hasPrevious: boolean;
+    next?: string;
+    hasNext: boolean;
+}
+
 export abstract class IQuery {
     abstract characters(params?: CharacterFindInput): PaginatedCharacters | Promise<PaginatedCharacters>;
 
@@ -145,4 +162,13 @@ export abstract class IQuery {
     abstract location(id: string): Location | Promise<Location>;
 
     abstract locationsFromFilm(filmId: string): Location[] | Promise<Location[]>;
+
+    abstract allSpecies(params?: SpeciesFindInput): PaginatedSpecies | Promise<PaginatedSpecies>;
+
+    abstract species(id: string): Species | Promise<Species>;
+}
+
+export class Species {
+    id: string;
+    name: string;
 }
