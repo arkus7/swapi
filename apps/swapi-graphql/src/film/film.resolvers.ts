@@ -1,9 +1,9 @@
+import { PaginateResult } from '@app/database/common/paginateResult.interface';
+import { CreateFilmDto } from '@app/database/filmData/dto/createFilm.dto';
 import { Film } from '@app/database/filmData/film.interface';
 import { FilmDataService } from '@app/database/filmData/filmData.service';
 import { Args, Mutation, Parent, Query, ResolveProperty, Resolver } from '@nestjs/graphql';
 
-import { PaginateResult } from '../../../../libs/database/src/common/paginateResult.interface';
-import { CreateFilmDto } from '../../../../libs/database/src/filmData/dto/createFilm.dto';
 import { EpisodeNumberArgs } from './args/episodeNumber.args';
 import { FilmFindInputArgs } from './args/filmFindInput.args';
 

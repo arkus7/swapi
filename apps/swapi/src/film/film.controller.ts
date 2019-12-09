@@ -1,9 +1,8 @@
+import { PaginateResult } from '@app/database/common/paginateResult.interface';
+import { FilmFindInputDto } from '@app/database/filmData/dto/filmFindInput.dto';
 import { Film } from '@app/database/filmData/film.interface';
 import { FilmDataService } from '@app/database/filmData/filmData.service';
 import { Controller, Get, Param, Query } from '@nestjs/common';
-
-import { PaginateResult } from '../../../../libs/database/src/common/paginateResult.interface';
-import { FilmFindInputDto } from '../../../../libs/database/src/filmData/dto/filmFindInput.dto';
 
 @Controller('films')
 export class FilmController {
