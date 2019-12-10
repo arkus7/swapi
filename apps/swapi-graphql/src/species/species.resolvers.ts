@@ -4,7 +4,7 @@ import { Species } from '@app/database/speciesData/species.interface';
 import { SpeciesDataService } from '@app/database/speciesData/speciesData.service';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 
-import { SpeciesFindInputArgs } from './args/locationFindInput.args';
+import { SpeciesFindInputArgs } from './args/speciesFindInput.args';
 
 @Resolver('Species')
 export class SpeciesResolvers {

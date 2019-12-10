@@ -1,0 +1,33 @@
+type Vehicle {
+  id: ID!
+  name: String!
+  description: String
+  pictureUrl: String
+  locations: [Location!]!
+  appearances: [Film!]!
+  dimensions: [String!]!
+}
+
+type Query {
+  vehicles(params: VehicleFindInput): PaginatedVehicles!
+  vehicle(id: ID!): Vehicle
+}
+
+input VehicleFindInput {
+  paginate: PaginateOptionsInput
+  filter: VehicleWhereInput
+}
+
+input VehicleWhereInput {
+  name: String
+  location: ID
+  film: ID
+}
+
+type PaginatedVehicles {
+  results: [Vehicle]!
+  previous: String
+  hasPrevious: Boolean!
+  next: String
+  hasNext: Boolean!
+}

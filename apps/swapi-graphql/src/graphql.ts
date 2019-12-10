@@ -69,6 +69,17 @@ export class SpeciesWhereInput {
     name?: string;
 }
 
+export class VehicleFindInput {
+    paginate?: PaginateOptionsInput;
+    filter?: VehicleWhereInput;
+}
+
+export class VehicleWhereInput {
+    name?: string;
+    location?: string;
+    film?: string;
+}
+
 export class Character {
     id: string;
     name: string;
@@ -144,6 +155,14 @@ export class PaginatedSpecies {
     hasNext: boolean;
 }
 
+export class PaginatedVehicles {
+    results: Vehicle[];
+    previous?: string;
+    hasPrevious: boolean;
+    next?: string;
+    hasNext: boolean;
+}
+
 export abstract class IQuery {
     abstract characters(params?: CharacterFindInput): PaginatedCharacters | Promise<PaginatedCharacters>;
 
@@ -166,9 +185,23 @@ export abstract class IQuery {
     abstract allSpecies(params?: SpeciesFindInput): PaginatedSpecies | Promise<PaginatedSpecies>;
 
     abstract species(id: string): Species | Promise<Species>;
+
+    abstract vehicles(params?: VehicleFindInput): PaginatedVehicles | Promise<PaginatedVehicles>;
+
+    abstract vehicle(id: string): Vehicle | Promise<Vehicle>;
 }
 
 export class Species {
     id: string;
     name: string;
+}
+
+export class Vehicle {
+    id: string;
+    name: string;
+    description?: string;
+    pictureUrl?: string;
+    locations: Location[];
+    appearances: Film[];
+    dimensions: string[];
 }
