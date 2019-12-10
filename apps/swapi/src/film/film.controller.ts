@@ -10,7 +10,7 @@ export class FilmController {
 
   @Get()
   getAllFilms(@Query() params: FilmFindInputDto): Promise<PaginateResult<Film>> {
-    const findOptions = Object.assign({ paginate: {}, conditions: {} }, params);
+    const findOptions = Object.assign(FilmFindInputDto.default(), params);
     return this.filmDataService.findAll(findOptions);
   }
 

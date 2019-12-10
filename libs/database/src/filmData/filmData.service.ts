@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 
-import { PaginatedModel } from '../common/paginated.model';
+import { PaginatedModel, PaginateOptions } from '../common/paginated.model';
 import { PaginateResult } from '../common/paginateResult.interface';
 import { CreateFilmDto } from './dto/createFilm.dto';
 import { FilmFindInputDto } from './dto/filmFindInput.dto';
@@ -15,13 +15,29 @@ export class FilmDataService {
     return await createdFilm.save();
   }
 
-  async findAll(params: FilmFindInputDto = { paginate: {}, conditions: {} }): Promise<PaginateResult<Film>> {
-    const { paginate, conditions } = params;
-    const options = {
+  async findAll(params: FilmFindInputDto = { paginate: {}, filter: {} }): Promise<PaginateResult<Film>> {
+    const { paginate, filter } = params;
+    console.log('TCL: FilmDataService -> constructor -> paginate', paginate);
+
+    const query: any = {};
+    const { title, episodeNumber } = filter;
+
+    if (title) {
+      query.title = {
+        $regex: title,
+        $options: 'i',
+      };
+    }
+    if (episodeNumber) {
+      query.episodeNumber = episodeNumber;
+    }
+
+    const options: PaginateOptions = {
+      query,
       limit: paginate.take,
-      query: conditions,
       next: paginate.after,
       previous: paginate.before,
+      sortAscending: paginate.ascending,
       paginatedField: paginate.sortBy,
     };
     console.log('TCL: FilmDataService -> constructor -> options', options);

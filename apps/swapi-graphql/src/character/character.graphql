@@ -9,7 +9,7 @@ type Character {
   eyeColor: [String!]!
   birthYear: String
   gender: String
-  # homeWorld: Planet
+  homeWorld: Location
   # species: Species
   appearances: [Film!]!
   # vehicles: [Vehicle!]!
@@ -22,7 +22,14 @@ type Query {
 }
 
 input CharacterFindInput {
-  paginate: PaginateOptions
+  paginate: PaginateOptionsInput
+  filter: CharacterWhereInput
+}
+
+input CharacterWhereInput {
+  name: String
+  film: ID
+  homeWorld: ID
 }
 
 type PaginatedCharacters {

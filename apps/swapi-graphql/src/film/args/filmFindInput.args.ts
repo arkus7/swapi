@@ -16,5 +16,5 @@ export class FilmFindInputArgs {
   @ValidateNested()
   @Type(() => FilmWhereInputDto)
   @Field(() => FilmWhereInputDto)
-  conditions?: FilmWhereInputDto;
+  filter?: FilmWhereInputDto;
 }

@@ -1,13 +1,12 @@
-import { Transform, Type } from 'class-transformer';
-import { IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsBoolean, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 
-import { PaginateOptions } from '../../graphql';
+import { PaginateOptionsInput } from '../../graphql';
 
-export class PaginateInputDto implements PaginateOptions {
+export class PaginateInputDto implements PaginateOptionsInput {
   @Min(1)
   @Max(100)
   @IsOptional()
-  @Transform((value) => Number(value))
   @Type(() => Number)
   @IsInt()
   take?: number;
@@ -23,4 +22,9 @@ export class PaginateInputDto implements PaginateOptions {
   @IsString()
   @IsOptional()
   sortBy?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  @Type(() => Boolean)
+  ascending?: boolean;
 }

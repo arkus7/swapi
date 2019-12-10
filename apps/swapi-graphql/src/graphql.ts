@@ -6,7 +6,14 @@
 
 /* tslint:disable */
 export class CharacterFindInput {
-    paginate?: PaginateOptions;
+    paginate?: PaginateOptionsInput;
+    filter?: CharacterWhereInput;
+}
+
+export class CharacterWhereInput {
+    name?: string;
+    film?: string;
+    homeWorld?: string;
 }
 
 export class CreateFilmInput {
@@ -24,8 +31,8 @@ export class CreateFilmInput {
 }
 
 export class FilmFindInput {
-    paginate?: PaginateOptions;
-    conditions?: FilmWhereInput;
+    paginate?: PaginateOptionsInput;
+    filter?: FilmWhereInput;
 }
 
 export class FilmWhereInput {
@@ -33,12 +40,44 @@ export class FilmWhereInput {
     title?: string;
 }
 
-export class PaginateOptions {
+export class LocationFindInput {
+    paginate?: PaginateOptionsInput;
+    filter?: LocationWhereInput;
+}
+
+export class LocationWhereInput {
+    name?: string;
+    film?: string;
+    climate?: string;
+    terrain?: string;
+}
+
+export class PaginateOptionsInput {
     take?: number;
     after?: string;
     before?: string;
     sortBy?: string;
     ascending?: boolean;
+}
+
+export class SpeciesFindInput {
+    paginate?: PaginateOptionsInput;
+    filter?: SpeciesWhereInput;
+}
+
+export class SpeciesWhereInput {
+    name?: string;
+}
+
+export class VehicleFindInput {
+    paginate?: PaginateOptionsInput;
+    filter?: VehicleWhereInput;
+}
+
+export class VehicleWhereInput {
+    name?: string;
+    location?: string;
+    film?: string;
 }
 
 export class Character {
@@ -52,6 +91,7 @@ export class Character {
     eyeColor: string[];
     birthYear?: string;
     gender?: string;
+    homeWorld?: Location;
     appearances: Film[];
 }
 
@@ -68,6 +108,15 @@ export class Film {
     posterUrl?: string;
     precededBy?: Film;
     followedBy?: Film;
+}
+
+export class Location {
+    id: string;
+    name: string;
+    pictureUrl?: string;
+    appearances: Film[];
+    climate: string[];
+    terrain: string[];
 }
 
 export abstract class IMutation {
@@ -90,6 +139,30 @@ export class PaginatedFilms {
     hasNext: boolean;
 }
 
+export class PaginatedLocations {
+    results: Location[];
+    previous?: string;
+    hasPrevious: boolean;
+    next?: string;
+    hasNext: boolean;
+}
+
+export class PaginatedSpecies {
+    results: Species[];
+    previous?: string;
+    hasPrevious: boolean;
+    next?: string;
+    hasNext: boolean;
+}
+
+export class PaginatedVehicles {
+    results: Vehicle[];
+    previous?: string;
+    hasPrevious: boolean;
+    next?: string;
+    hasNext: boolean;
+}
+
 export abstract class IQuery {
     abstract characters(params?: CharacterFindInput): PaginatedCharacters | Promise<PaginatedCharacters>;
 
@@ -102,4 +175,33 @@ export abstract class IQuery {
     abstract film(id: string): Film | Promise<Film>;
 
     abstract filmByEpisode(episodeNumber: number): Film | Promise<Film>;
+
+    abstract locations(params?: LocationFindInput): PaginatedLocations | Promise<PaginatedLocations>;
+
+    abstract location(id: string): Location | Promise<Location>;
+
+    abstract locationsFromFilm(filmId: string): Location[] | Promise<Location[]>;
+
+    abstract allSpecies(params?: SpeciesFindInput): PaginatedSpecies | Promise<PaginatedSpecies>;
+
+    abstract species(id: string): Species | Promise<Species>;
+
+    abstract vehicles(params?: VehicleFindInput): PaginatedVehicles | Promise<PaginatedVehicles>;
+
+    abstract vehicle(id: string): Vehicle | Promise<Vehicle>;
+}
+
+export class Species {
+    id: string;
+    name: string;
+}
+
+export class Vehicle {
+    id: string;
+    name: string;
+    description?: string;
+    pictureUrl?: string;
+    locations: Location[];
+    appearances: Film[];
+    dimensions: string[];
 }

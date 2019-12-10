@@ -1,0 +1,26 @@
+type Species {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  allSpecies(params: SpeciesFindInput): PaginatedSpecies!
+  species(id: ID!): Species
+}
+
+input SpeciesFindInput {
+  paginate: PaginateOptionsInput
+  filter: SpeciesWhereInput
+}
+
+input SpeciesWhereInput {
+  name: String
+}
+
+type PaginatedSpecies {
+  results: [Species]!
+  previous: String
+  hasPrevious: Boolean!
+  next: String
+  hasNext: Boolean!
+}

@@ -5,6 +5,15 @@ module.exports = {
   locations: {
     tatooine: ObjectID(),
     naboo: ObjectID(),
+    deathStar: ObjectID(),
+    deathStar2: ObjectID(),
+    havocOutpost: ObjectID(),
+    obiWanHouse: ObjectID(),
+    corellia: ObjectID(),
+    alderaan: ObjectID(),
+    dQar: ObjectID(),
+    kashyyyk: ObjectID(),
+    yodaHut: ObjectID(),
   },
   films: {
     thePhantomMenace: ObjectID(),
@@ -22,14 +31,31 @@ module.exports = {
     r2d2: ObjectID(),
     darthVader: ObjectID(),
     leiaOrgana: ObjectID(),
-    owenLars: ObjectID()
+    owenLars: ObjectID(),
+    obiWanKenobi: ObjectID(),
+    palpatine: ObjectID(),
+    hanSolo: ObjectID(),
+    chewbacca: ObjectID(),
+    padme: ObjectID(),
+    yoda: ObjectID(),
   },
   species: {
     human: ObjectID(),
     droid: ObjectID(),
+    wookiee: ObjectID(),
   },
   vehicles: {
     t16Skyhopper: ObjectID(),
     xWingStarfighter: ObjectID(),
+    tieFighter: ObjectID(),
+    x34LandSpeeder: ObjectID(),
+    snowspeeder: ObjectID(),
+    millenniumFalcon: ObjectID(),
+    theEravana: ObjectID(),
+    tantive4: ObjectID(),
+    theRaddus: ObjectID(),
+    nabooN1Starfighter: ObjectID(),
+    nabooRoyalStarship: ObjectID(),
+    nabooRoyalCruiser: ObjectID(),
   }
 }
