@@ -49,11 +49,6 @@ export class ConfigService {
    */
   private validateInput(envConfig: EnvConfig): EnvConfig {
     const envVarsSchema: Joi.ObjectSchema = Joi.object({
-      console.log('TCL: ConfigService -> constructor -> this.envConfig ', this.envConfig);
-      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
-      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
-      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
-      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
       NODE_ENV: Joi.string()
         .valid('development', 'production', 'test')
         .default('development'),
