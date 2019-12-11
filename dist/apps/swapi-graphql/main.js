@@ -239,6 +239,7 @@ AppModule = __decorate([
                         typePaths: ['./**/*.graphql'],
                         debug: config.isDebug,
                         playground: true,
+                        introspection: true,
                     };
                 },
             }),
