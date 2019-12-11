@@ -15,7 +15,7 @@ export class ConfigService {
   }
 
   get(key: string): string {
-    return this.envConfig[key];
+    return process.env[key] || this.envConfig[key];
   }
 
   get mongoDbUri(): string {
