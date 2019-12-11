@@ -8,6 +8,8 @@ export class ConfigService {
   private readonly envConfig: Record<string, string>;
 
   constructor(filePath: string) {
+    console.log('TCL: ConfigService -> constructor -> filePath', filePath);
+    console.log('TCL: ConfigService -> constructor -> fs.existsSync(filePath)', fs.existsSync(filePath));
     if (fs.existsSync(filePath)) {
       const config = dotenv.parse(fs.readFileSync(filePath));
       this.envConfig = this.validateInput(config);
