@@ -7,7 +7,7 @@ const fixtures = new Fixtures({
 });
 
 fixtures
-  .connect('mongodb://localhost:27018/mydb')
+  .connect('mongodb://localhost:27018/swapi-dev')
   .then(() => fixtures.unload())
   .then(() => fixtures.load())
   .then(() => fixtures.disconnect());
