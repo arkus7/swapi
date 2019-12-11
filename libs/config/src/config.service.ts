@@ -8,8 +8,10 @@ export class ConfigService {
   private readonly envConfig: Record<string, string>;
 
   constructor(filePath: string) {
-    const config = dotenv.parse(fs.readFileSync(filePath));
-    this.envConfig = this.validateInput(config);
+    if (fs.existsSync(filePath)) {
+      const config = dotenv.parse(fs.readFileSync(filePath));
+      this.envConfig = this.validateInput(config);
+    }
   }
 
   get(key: string): string {

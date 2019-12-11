@@ -39,7 +39,8 @@ module.exports = {
       ref: 'origin/development',
       repo: 'git@github.com:arkus7/swapi.git',
       path: '/var/www/production',
-      'post-deploy': 'npm install --dev && nest build && nest build swapi-graphql && pm2 reload ecosystem.config.js --env production'
+      'post-setup': 'npm install -g @nestjs/cli pm2',
+      'post-deploy': 'npm install && nest build && nest build swapi-graphql && pm2 reload ecosystem.config.js --env production'
     }
   }
 };
