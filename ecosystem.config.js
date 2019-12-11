@@ -40,7 +40,7 @@ module.exports = {
       repo: 'git@github.com:arkus7/swapi.git',
       path: '/var/www/production',
       'post-setup': 'npm install -g @nestjs/cli pm2',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy': 'npm install && ./node_modules/.bin/pm2 reload ecosystem.config.js --env production'
     }
   }
 };

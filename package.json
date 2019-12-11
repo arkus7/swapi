@@ -20,7 +20,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/swapi/test/jest-e2e.json",
-    "deploy": "pm2 deploy production"
+    "deploy": "nest build && nest build swapi-graphql && pm2 deploy production"
   },
   "dependencies": {
     "@hapi/joi": "^16.1.8",
@@ -38,7 +38,8 @@
     "mongoose-cursor-pagination-plugin": "^1.0.4",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "pm2": "^4.2.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.9.0",
@@ -53,7 +54,6 @@
     "@types/supertest": "^2.0.8",
     "jest": "^24.9.0",
     "node-mongodb-fixtures": "^3.1.2",
-    "pm2": "^4.2.1",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
