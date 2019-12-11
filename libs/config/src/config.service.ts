@@ -13,10 +13,16 @@ export class ConfigService {
     if (fs.existsSync(filePath)) {
       const config = dotenv.parse(fs.readFileSync(filePath));
       this.envConfig = this.validateInput(config);
+    } else {
+      this.envConfig = {};
     }
+    console.log('TCL: ConfigService -> constructor -> envConfig', this.envConfig);
   }
 
   get(key: string): string {
+    console.log('TCL: ConfigService -> key', key);
+    console.log('TCL: ConfigService -> process.env[key]', process.env[key]);
+    console.log('TCL: ConfigService -> this.envConfig[key]', this.envConfig[key]);
     return process.env[key] || this.envConfig[key];
   }
 
@@ -43,6 +49,11 @@ export class ConfigService {
    */
   private validateInput(envConfig: EnvConfig): EnvConfig {
     const envVarsSchema: Joi.ObjectSchema = Joi.object({
+      console.log('TCL: ConfigService -> constructor -> this.envConfig ', this.envConfig);
+      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
+      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
+      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
+      console.log('TCL: ConfigService -> constructor -> this.envConfig', this.envConfig);
       NODE_ENV: Joi.string()
         .valid('development', 'production', 'test')
         .default('development'),
