@@ -4,12 +4,6 @@ import * as fs from 'fs';
 
 export type EnvConfig = Record<string, string>;
 
-export interface MongoDbCredentials {
-  user: string;
-  password: string;
-  database: string;
-}
-
 export class ConfigService {
   private readonly envConfig: Record<string, string>;
 
@@ -22,12 +16,8 @@ export class ConfigService {
     return this.envConfig[key];
   }
 
-  get mongoCredentials(): MongoDbCredentials {
-    return {
-      user: this.get('MONGODB_USER'),
-      password: this.get('MONGODB_PASSWORD'),
-      database: this.get('MONGODB_DATABASE'),
-    };
+  get mongoDbUri(): string {
+    return this.get('MONGODB_URI');
   }
 
   get restPort(): number {
@@ -54,9 +44,7 @@ export class ConfigService {
         .default('development'),
       GRAPHQL_PORT: Joi.number().default(3001),
       REST_PORT: Joi.number().default(3000),
-      MONGODB_DATABASE: Joi.string().required(),
-      MONGODB_USER: Joi.string().required(),
-      MONGODB_PASSWORD: Joi.string().required(),
+      MONGODB_URI: Joi.string().required(),
     });
 
     const { error, value: validatedEnvConfig } = envVarsSchema.validate(
