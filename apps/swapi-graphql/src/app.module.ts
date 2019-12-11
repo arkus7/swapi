@@ -25,6 +25,7 @@ import { VehicleModule } from './vehicle/vehicle.module';
           typePaths: ['./**/*.graphql'],
           debug: config.isDebug,
           playground: true,
+          introspection: true,
         };
       },
     }),
