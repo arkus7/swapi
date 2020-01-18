@@ -7,6 +7,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "build:rest": "nest build swapi",
+    "build:graphql": "nest build swapi-graphql",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "fixtures": "node fixtures/index.js",
     "graphql:generate": "./node_modules/.bin/ts-node apps/swapi-graphql/generate-typings.ts",
