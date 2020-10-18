@@ -1,5 +1,10 @@
 const Fixtures = require('node-mongodb-fixtures');
 const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: 'development.env'
+});
 
 const fixtures = new Fixtures({
   dir: path.resolve(__dirname, 'entities'),
@@ -7,7 +12,7 @@ const fixtures = new Fixtures({
 });
 
 fixtures
-  .connect('mongodb://localhost:27018/swapi-dev')
+  .connect(process.env.MONGODB_URI)
   .then(() => fixtures.unload())
   .then(() => fixtures.load())
   .then(() => fixtures.disconnect());
